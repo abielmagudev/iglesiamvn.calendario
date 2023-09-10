@@ -7,9 +7,9 @@
     </h1>
 </header>
 
+@if( count($eventos) )
 <div id="calendarioItems">
     @foreach($eventos as $evento)
-
     <?php $vigente = strtotime($evento->fecha) > $timer ?>
 
     <div class="{{ $vigente ? 'has-shadow-animated' : '' }}">
@@ -36,9 +36,15 @@
             </div>
         </div>
     </div>
+
     <br>
     @endforeach
 </div>
+
+@else
+<p class="has-text-centered is-uppercase">Sin eventos en este mes</p>
+
+@endif
 @endsection
 
 @section('afterContainer')
